@@ -4,7 +4,14 @@ using System.Collections;
 
 public class GeometryCalculator {
 
-
+    public double CalculateChordeCurve(float radius, float chordeLength)
+    {
+        // Chorde with two radiuses are Isosceles traingle.
+        double cosA = CalculateIsoscelesCentralCosine(radius, chordeLength);
+        double radiansA = CosineToRadians(cosA);
+        double chordeCurveLength = CalculateChordeCurveLength(radiansA, radius);
+        return chordeCurveLength;
+    }
 
     /// <summary>
     /// Calculates cos of central angle (between legs) from traingle side lengths.
@@ -38,7 +45,7 @@ public class GeometryCalculator {
     /// </summary>
     /// <param name="radians">Central angle</param>
     /// <param name="radius">Circle radius</param>
-    public double CalculateChordeLength(double radians, float radius)
+    public double CalculateChordeCurveLength(double radians, float radius)
     {
         return radians * radius;
     }

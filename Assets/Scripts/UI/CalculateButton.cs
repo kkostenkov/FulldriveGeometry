@@ -23,5 +23,7 @@ public class CalculateButton : MonoBehaviour {
         ulong.TryParse(chordeInputField.text, out chordeLength);
         print(radius);
         print(chordeLength);
+        ChordePacker cPacker = new ChordePacker();
+        cPacker.PackChordsToCircle(radius, chordeLength);
     }
 }
