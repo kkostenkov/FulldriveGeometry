@@ -18,9 +18,25 @@ public class ChordePacker {
     {
         get { return chordeLength; }
     }
+    private float offestLength;
     public float OffsetLength
     {
-        get { return chordeLength * OFFSET_MODIFIER; }
+        get { return offestLength; }
+    }
+
+    private float chordeAngle;
+    public float ChordeAngle
+    {
+        get
+        {
+            return chordeAngle;
+        }
+    }
+    private float offsetAngle;
+    public float OffsetAngle
+        {
+        get { return offsetAngle;
+        }
     }
 
 
@@ -29,12 +45,14 @@ public class ChordePacker {
         radius = radius_;
         chordeLength = chordeLength_;
         GeometryCalculator calc = new GeometryCalculator();
-        float chordeCurve = (float)calc.CalculateChordeCurve(radius, chordeLength);
-        float offestLength = chordeLength * OFFSET_MODIFIER;
-        //SceneDirector.Instance.Print(offestLength.ToString());
-        float offsetCurve = (float)calc.CalculateChordeCurve(radius, offestLength);
-        //SceneDirector.Instance.Print(offsetCurve.ToString());
-        //SceneDirector.Instance.ShowResult(chordeCurve.ToString() + " " + offsetCurve.ToString());
+        chordeAngle = (float)calc.CalculateCenterAngle(radius, chordeLength);
+        SceneDirector.Instance.Print("Chorde angle is " + chordeAngle.ToString());
+        float chordeCurve = (float)calc.CalculateChordeCurveLength(chordeAngle, radius);
+        SceneDirector.Instance.Print("Chorde curve is " + chordeCurve.ToString());
+        offestLength = chordeLength * OFFSET_MODIFIER;
+        offsetAngle = (float)calc.CalculateChordeCurveLength(radius, offestLength);
+        float offsetCurve = (float)calc.CalculateChordeCurveLength(offsetAngle, radius);
+        SceneDirector.Instance.Print("Offset curve is " + offsetCurve.ToString());
         float setLength = chordeCurve + offsetCurve;
         SceneDirector.Instance.Print("Set Length is " + setLength.ToString());
         float circlePerimeter = calc.CalculateCirclePerimeter(radius);

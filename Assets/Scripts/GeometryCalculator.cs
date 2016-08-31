@@ -4,6 +4,15 @@ using System.Collections;
 
 public class GeometryCalculator {
 
+    public double CalculateCenterAngle(float radius, float chordeLength)
+    {
+        // Chorde with two radiuses are Isosceles traingle.
+        double cosB = CalculateIsoscelesSharpCosine(radius, chordeLength);
+        double radiansB = CosineToRadians(cosB);
+        double radiansA = Math.PI - radiansB * 2;
+        return radiansA;
+    }
+
     public double CalculateChordeCurve(float radius, float chordeLength)
     {
         // Chorde with two radiuses are Isosceles traingle.

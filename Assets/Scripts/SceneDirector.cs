@@ -4,6 +4,7 @@ using System.Collections;
 using System;
 
 public class SceneDirector : MonoBehaviour {
+    [SerializeField] private AnswerDrawer answerDrawer;
     [SerializeField] private Text result;
     private static string answerTemplate = "Circle with radius {0} can hold maximum {1} chordes with offset of {2}";
 
@@ -23,6 +24,7 @@ public class SceneDirector : MonoBehaviour {
     public void ReportResult(ChordePacker result)
     {
         ShowText(String.Format(answerTemplate, result.Radius, result.SetsPackedCount, result.OffsetLength));
+        answerDrawer.DrawChords(result);
     }
 	
 	public void ShowText(string resultText)
