@@ -2,11 +2,32 @@
 using System.Collections;
 
 public class ChordePacker {
-    public static float OFFSET_MODIFIER = 0.2f;
-    
-
-    public void PackChordsToCircle(float radius, float chordeLength)
+    private static float OFFSET_MODIFIER = 0.2f;
+    private int setsPackedCount;
+    public int SetsPackedCount
     {
+        get { return setsPackedCount; }
+    }
+    private float radius;
+    public float Radius
+    {
+        get { return radius; }
+    }
+    private float chordeLength;
+    public float ChordeLength
+    {
+        get { return chordeLength; }
+    }
+    public float OffsetLength
+    {
+        get { return chordeLength * OFFSET_MODIFIER; }
+    }
+
+
+    public void PackChordsToCircle(float radius_, float chordeLength_)
+    {
+        radius = radius_;
+        chordeLength = chordeLength_;
         GeometryCalculator calc = new GeometryCalculator();
         float chordeCurve = (float)calc.CalculateChordeCurve(radius, chordeLength);
         float offestLength = chordeLength * OFFSET_MODIFIER;
@@ -18,9 +39,7 @@ public class ChordePacker {
         SceneDirector.Instance.Print("Set Length is " + setLength.ToString());
         float circlePerimeter = calc.CalculateCirclePerimeter(radius);
         SceneDirector.Instance.Print("Circle perimeter is " + circlePerimeter.ToString());
-        int setsPackedCount = (int)(circlePerimeter / setLength);
-
-        SceneDirector.Instance.ShowResult(setsPackedCount.ToString() + " sets packed.");
-
+        setsPackedCount = (int)(circlePerimeter / setLength);
+        SceneDirector.Instance.ReportResult(this);
     }
 }
