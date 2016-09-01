@@ -6,8 +6,8 @@ using System.Collections;
 public class TestGeometryController : MonoBehaviour {
 	
 	void Start () {
-        //TestAngles();
-        //TestChordeCurve();
+        TestAngles();
+        TestChordeCurve();
     }
 
     private void TestChordeCurve()

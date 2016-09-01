@@ -6,14 +6,6 @@ public class ChordeSetPositioner : MonoBehaviour {
     [SerializeField] private LineRenderer chordeLine;
     [SerializeField] private LineRenderer offsetLine;
 
-	void Start () {
-	
-	}
-	
-	void Update () {
-	
-	}
-
     internal void Initialize(int setNumber, ChordePacker data)
     {
         float radius = data.Radius;

@@ -8,21 +8,10 @@ public class CalculateButton : MonoBehaviour {
     private float radius;
     private ulong chordeLength;
 
-	void Start () {
-	
-	}
-	
-
-	void Update () {
-	
-	}
-
     public void OnButtonPressed()
     {
         float.TryParse(radiusInputField.text, out radius);
         ulong.TryParse(chordeInputField.text, out chordeLength);
-        print(radius);
-        print(chordeLength);
         ChordePacker cPacker = new ChordePacker();
         cPacker.PackChordsToCircle(radius, chordeLength);
     }

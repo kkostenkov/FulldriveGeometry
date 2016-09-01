@@ -46,18 +46,12 @@ public class ChordePacker {
         chordeLength = chordeLength_;
         GeometryCalculator calc = new GeometryCalculator();
         chordeAngle = (float)calc.CalculateCenterAngle(radius, chordeLength);
-        SceneDirector.Instance.Print("Chorde angle is " + chordeAngle.ToString());
         float chordeCurve = (float)calc.CalculateChordeCurveLength(chordeAngle, radius);
-        SceneDirector.Instance.Print("Chorde curve is " + chordeCurve.ToString());
         offestLength = chordeLength * OFFSET_MODIFIER;
         offsetAngle = (float)calc.CalculateCenterAngle(radius, offestLength);
-        SceneDirector.Instance.Print("Offset angle is " + offsetAngle.ToString());
         float offsetCurve = (float)calc.CalculateChordeCurveLength(offsetAngle, radius);
-        SceneDirector.Instance.Print("Offset curve is " + offsetCurve.ToString());
         float setLength = chordeCurve + offsetCurve;
-        SceneDirector.Instance.Print("Set Length is " + setLength.ToString());
         float circlePerimeter = calc.CalculateCirclePerimeter(radius);
-        SceneDirector.Instance.Print("Circle perimeter is " + circlePerimeter.ToString());
         setsPackedCount = (int)(circlePerimeter / setLength);
         SceneDirector.Instance.ReportResult(this);
     }
