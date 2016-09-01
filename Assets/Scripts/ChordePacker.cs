@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
 
 public class ChordePacker {
     private static float OFFSET_MODIFIER = 0.2f;
@@ -53,13 +52,10 @@ public class ChordePacker {
         chordeLength = chordeLength_;
         GeometryCalculator calc = new GeometryCalculator();
         chordeAngle = (float)calc.CalculateCenterAngle(radius, chordeLength);
-        float chordeCurve = (float)calc.CalculateChordeCurveLength(chordeAngle, radius);
         offestLength = chordeLength * OFFSET_MODIFIER;
         offsetAngle = (float)calc.CalculateCenterAngle(radius, offestLength);
-        float offsetCurve = (float)calc.CalculateChordeCurveLength(offsetAngle, radius);
-        float setLength = chordeCurve + offsetCurve;
-        float circlePerimeter = calc.CalculateCirclePerimeter(radius);
-        setsPackedCount = (int)(circlePerimeter / setLength);
+        double quotient = 2 * Math.PI / (offsetAngle + chordeAngle);
+        setsPackedCount = (int)Math.Floor(quotient);
         SceneDirector.Instance.ReportResult(this);
     }
 }
