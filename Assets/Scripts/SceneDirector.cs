@@ -8,7 +8,8 @@ public class SceneDirector : MonoBehaviour {
     [SerializeField] private Text result;
     [SerializeField] private Text grumpy;
     [SerializeField] private GameObject inputWarning;
-    private static string answerTemplate = "Circle with radius {0} can hold maximum {1} chordes with offset of {2}";
+    private static string answerTemplate = 
+        "Circle with radius {0} can hold maximum {1} chordes of length {2} with offset of {3}";
 
     private static SceneDirector instance;
     public static SceneDirector Instance
@@ -30,7 +31,9 @@ public class SceneDirector : MonoBehaviour {
 
     public void ReportResult(ChordePacker result)
     {
-        ShowText(String.Format(answerTemplate, result.Radius, result.SetsPackedCount, result.OffsetLength));
+        ShowText(String.Format(answerTemplate, result.Radius, result.SetsPackedCount, 
+                               result.ChordeLength, result.OffsetLength)
+                               );
         grumpy.text = result.SetsPackedCount.ToString();
         answerDrawer.DrawChords(result);
     }
