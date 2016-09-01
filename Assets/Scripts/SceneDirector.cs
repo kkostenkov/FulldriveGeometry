@@ -7,6 +7,7 @@ public class SceneDirector : MonoBehaviour {
     [SerializeField] private AnswerDrawer answerDrawer;
     [SerializeField] private Text result;
     [SerializeField] private Text grumpy;
+    [SerializeField] private GameObject inputWarning;
     private static string answerTemplate = "Circle with radius {0} can hold maximum {1} chordes with offset of {2}";
 
     private static SceneDirector instance;
@@ -20,6 +21,11 @@ public class SceneDirector : MonoBehaviour {
 
     void Start () {
         instance = this;
+    }
+
+    public void ShowInputWarning()
+    {
+        result.text = "Can't compute. \nPlease check input values.";
     }
 
     public void ReportResult(ChordePacker result)

@@ -42,6 +42,13 @@ public class ChordePacker {
 
     public void PackChordsToCircle(float radius_, float chordeLength_)
     {
+        if (radius_ * 2 < chordeLength_ ||
+            radius_ <= 0 ||
+            chordeLength_ <= 0)
+        {
+            SceneDirector.Instance.ShowInputWarning();
+            return;
+        }
         radius = radius_;
         chordeLength = chordeLength_;
         GeometryCalculator calc = new GeometryCalculator();
