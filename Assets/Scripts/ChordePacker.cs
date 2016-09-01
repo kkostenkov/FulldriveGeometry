@@ -50,7 +50,8 @@ public class ChordePacker {
         float chordeCurve = (float)calc.CalculateChordeCurveLength(chordeAngle, radius);
         SceneDirector.Instance.Print("Chorde curve is " + chordeCurve.ToString());
         offestLength = chordeLength * OFFSET_MODIFIER;
-        offsetAngle = (float)calc.CalculateChordeCurveLength(radius, offestLength);
+        offsetAngle = (float)calc.CalculateCenterAngle(radius, offestLength);
+        SceneDirector.Instance.Print("Offset angle is " + offsetAngle.ToString());
         float offsetCurve = (float)calc.CalculateChordeCurveLength(offsetAngle, radius);
         SceneDirector.Instance.Print("Offset curve is " + offsetCurve.ToString());
         float setLength = chordeCurve + offsetCurve;

@@ -22,7 +22,7 @@ public class ChordeSetPositioner : MonoBehaviour {
         angle += data.ChordeAngle;
         chordeLine.SetPosition(1, RotatedPointCoords(angle, radius));
         offsetLine.SetPosition(0, RotatedPointCoords(angle, radius));
-        angle += data.OffsetLength;
+        angle += data.OffsetAngle;
         offsetLine.SetPosition(1, RotatedPointCoords(angle, radius));
     }
 
